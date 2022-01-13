@@ -14,13 +14,13 @@ function CustomHooks() {
 
   const [intervalCount, setIntervalCount] = useState(0);
   useInterval(() => {
-    setIntervalCount(intervalCount + 1);
+    setIntervalCount((prevValue) => prevValue + 1);
   }, 1000);
 
   const [toggleValue, toggle] = useToggle(false);
 
   const [toggledCount, setToggledCount] = useState(0);
-  useUpdate(() => setToggledCount(toggledCount + 1), [toggleValue]);
+  useUpdate(() => setToggledCount((prevValue) => prevValue + 1), [toggleValue]);
 
   const [randomValue, setRandomValue] = useState(0);
   const previousRandomValue = usePrevious(randomValue);
